@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<htm lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>first steps with vue</title>
+    </head>
+    <body>
+        <div id='header'>
+            <h1>{{title.toLocaleUpperCase()}}</h1>
+            <input type="text" v-model="title">
+            <br>
+            <p v-if="isEmpty">The list is empty</p>
+            <br>
+            <button v-if="status === 'default'" @click="updateStatus">Add Items</button>
+            <button v-else @click="updateStatus">Candel</button>
+            <ul>
+                <li v-for="item in items">{{item}}</li>
+            </ul>
+            <div v-if="status == 'edit'">
+                <input type="text" v-model="newItem" placeholder="Add new items"
+                @keyup.enter="saveItem">
+                <button :disabled="newItemEmpty()" @click="saveItem">Seve Item</button>
+                <button :disabled="listEmpty()" @click="removeItem">Remove Item</button>
+            </div>
+        </div>
+        <br>
+        <div id='app'>
+            <click-counter></click-counter>
+        </div>
+
+        <script src='https://unpkg.com/vue'></script>
+        <script src="components-fundamentals.js"></script>
+        <script src="fundamentals.js"></script>
+    </body>
+</htm>

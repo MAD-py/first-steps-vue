@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+        <title>Shopping</title>
+    </head>
+    <body>
+        <div id="global" :style="{marginTop: spaceUP+'%'}">
+            <div class="title dancing">
+                <h1>Shopping List</h1>
+            </div>
+            <div>
+                <div class="center-text grid-container-edit center-elements">
+                    <p v-if="listIsEmpty()" class="lobster">The shopping list is empty</p>
+                    <p v-else class="lobster">This is the shopping</p>
+                    <button v-if="!getStatusEdit()" @click="updateStatusEdit(true)" class="btn btn-add-item">
+                        Add Element
+                    </button>
+                    <button v-else @click="updateStatusEdit(false)" class="btn btn-cancel">
+                        Candel
+                    </button>
+                </div>
+                <div class="grid-list center-elements container-elements">
+                    <ul>
+                        <li v-for="item in shopping">{{item}}</li>
+                    </ul>
+                </div>
+                <div v-if="getStatusEdit()" class="center-elements container-elements grid-new-elements">
+                    <input type="text" placeholder="Add an element" v-model="newElement" @keyup.enter="addElement">
+                    <button :disabled=newElementEmpty() @click="addElement">Seve element</button>
+                    <button :disabled="listIsEmpty()" @click="removeElement">Delete last element</button>
+                </div>
+            </div>
+        </div>
+        <script src='https://unpkg.com/vue'></script>
+        <script src='app.js'></script>
+    </body>
+</html>
+    
