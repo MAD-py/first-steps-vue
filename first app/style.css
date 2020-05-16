@@ -69,3 +69,13 @@
     height: 30px;
     background-color: #D91111;
 }
+
+.ready {
+    color: #8A8888;
+    text-decoration: line-through;
+}
+
+.priority {
+    color: #DD4B07;
+    width: 100px;
+}

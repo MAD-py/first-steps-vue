@@ -25,7 +25,9 @@
                 </div>
                 <div class="grid-list center-elements container-elements">
                     <ul>
-                        <li v-for="item in shopping">{{item}}</li>
+                        <li v-for="item in shopping" @click="ready(item)" @click.right="priority(item)" :class="{ready: item.check, priority: item.priority}">
+                            {{item.element}}
+                        </li>
                     </ul>
                 </div>
                 <div v-if="getStatusEdit()" class="center-elements container-elements grid-new-elements">

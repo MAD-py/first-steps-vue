@@ -5,7 +5,7 @@ new Vue({
         statusEdit: false,
         shopping: [],
         newElement: '',
-        spaceUP: '20'
+        spaceUP: '20',
     },
 
     methods: {
@@ -22,7 +22,12 @@ new Vue({
             this.statusEdit = newStatus;
         },
         addElement: function() {
-            this.shopping.push(this.newElement);
+            this.shopping.push({
+                element: this.newElement,
+                check: false,
+                priority: false
+            });
+
             this.newElement = '';
             
             let spaceUP = parseFloat(this.spaceUP);
@@ -41,5 +46,11 @@ new Vue({
                 this.spaceUP = spaceUP.toString();
             }
         },
+        ready: function(item){
+            item.check = !item.check;
+        },
+        priority: function(item){
+            item.priority = !item.priority;
+        }
     }
 })
